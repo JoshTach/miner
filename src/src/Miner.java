@@ -68,25 +68,17 @@ public class Miner extends TaskScript {
         frame.pack(); //makes things visible?
         frame.setVisible(true); //sets GUI visible
 
-
         JPanel settingsPanel = new JPanel();
 
         settingsPanel.setLayout(new GridLayout(0,2));
-
-
-        JTextField rockNameTextField = new JTextField();
-        settingsPanel.add(rockNameTextField);
 
         JComboBox<String> areaComboBox = new JComboBox<>(new String[]{
             "West Mine", "East Mine"});
         settingsPanel.add(areaComboBox);
 
-
         JComboBox<String> rockComboBox = new JComboBox<>(new String[]{
                 "Copper", "Tin", "Clay", "Iron", "Coal"});
         settingsPanel.add(rockComboBox);
-
-
 
         frame.getContentPane().add(settingsPanel, BorderLayout.CENTER);
         //end of upper GUI
@@ -99,7 +91,6 @@ public class Miner extends TaskScript {
         button.setText("Start Script");
 
 
-//sack
 
         button.addActionListener(new ActionListener() {
             @Override
@@ -108,21 +99,12 @@ public class Miner extends TaskScript {
                 rockName = rockComboBox.getSelectedItem().toString();
                 miningPlace = areaComboBox.getSelectedItem().toString();
 
-
                 if (rnrc.containsKey(rockName)){
                 rnrc.get(rockName);
                 }
-
                 if (MiningAreaHashMap.containsKey(miningPlace)){
                     MiningAreaHashMap.get(miningPlace);
                 }
-
-
-//                if (!rockNameTextField.getText().equals(""))
-//                    rockNameLabel.setText(rockNameTextField.getText());
-//                else
-//                    rockNameLabel.setText("Please write something in the edit box");
-//
                 isRunning = true; //script wll loop code
                 frame.dispose(); //closes gui
             }
