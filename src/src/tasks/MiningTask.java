@@ -17,6 +17,24 @@ public class MiningTask extends TaskNode {
     MiningAreas MiningAreaObject = new MiningAreas();
     public boolean isWalking = true;
 
+    public void runFromTarget(){
+
+    if (getLocalPlayer().isHealthBarVisible() && getLocalPlayer().isInCombat()){
+        if (MiningAreaHashMap.get(miningPlace).contains(getLocalPlayer().getTile())){
+            //empty will fill later
+
+        }
+
+
+
+
+    }
+
+
+
+
+    }
+
 
 
     @Override

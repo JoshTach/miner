@@ -29,13 +29,22 @@ public class Miner extends TaskScript {
    public static Map<String, Integer> rnrc = new HashMap<String, Integer>();
    public static Map<String, Area> MiningAreaHashMap = new HashMap<String, Area>();
 
+   public static Map<Area, Area> MiningSafeSpot = new HashMap<>();
+
    public void addValues(){
         rnrc.put("Tin", 53);
         rnrc.put("Clay", 6705);
         rnrc.put("Iron",2576);
         MiningAreaHashMap.put("West Mine", MiningAreaObject.VarrockWestMiningArea);
         MiningAreaHashMap.put("East Mine", MiningAreaObject.VarrockEastMiningArea);
+        MiningSafeSpot.put(MiningAreaObject.VarrockWestMiningArea, MiningAreaObject.VarrockWestMineSafe);
+        MiningSafeSpot.put(MiningAreaObject.VarrockEastMiningArea, MiningAreaObject.VarrockEastMineSafe);
    }
+
+
+
+
+
 
 
     @Override
