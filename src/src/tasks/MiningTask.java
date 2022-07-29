@@ -4,24 +4,32 @@ import org.dreambot.api.methods.Calculations;
 import org.dreambot.api.methods.MethodProvider;
 import org.dreambot.api.methods.container.impl.Inventory;
 import org.dreambot.api.methods.interactive.GameObjects;
+import org.dreambot.api.methods.map.Area;
 import org.dreambot.api.script.TaskNode;
 import org.dreambot.api.wrappers.interactive.GameObject;
 import src.MiningAreas;
 import static org.dreambot.api.methods.walking.impl.Walking.walkExact;
-import static src.Miner.rnrc;
-import static src.Miner.rockName;
-import static src.Miner.MiningAreaHashMap;
-import static src.Miner.miningPlace;
+import static src.Miner.*;
+
 
 public class MiningTask extends TaskNode {
     MiningAreas MiningAreaObject = new MiningAreas();
     public boolean isWalking = true;
 
+    public Area temp;
+
     public void runFromTarget(){
 
     if (getLocalPlayer().isHealthBarVisible() && getLocalPlayer().isInCombat()){
         if (MiningAreaHashMap.get(miningPlace).contains(getLocalPlayer().getTile())){
-            //empty will fill later
+            temp = MiningSafeSpot.get(MiningAreaHashMap.get(miningPlace));
+
+            do {
+                walkExact(temp.getRandomTile());
+                sleep(Calculations.random(200,500));
+            }
+            while(!temp.contains(getLocalPlayer().getTile()));
+            //maybe is working gonna test tomorrow
 
         }
 
