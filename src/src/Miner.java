@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-@ScriptManifest(category = Category.MINING, name = "pablo", description = "Mines anything, and drops inventory when full. NOW INCLUDING EPIC IRON AND EAST MINE UPDATEOOO!!!!", author = "juan", version = 2.0)
+@ScriptManifest(category = Category.MINING, name = "pablo", description = "Mines anything, NOW INCLUDING EPIC IRON AND EAST MINE AS WELL AS ANTIBAN UPDATEOOO!!!!", author = "juan", version = 2.1)
 public class Miner extends TaskScript {
 
     MiningAreas MiningAreaObject = new MiningAreas();
@@ -40,11 +40,6 @@ public class Miner extends TaskScript {
         MiningSafeSpot.put(MiningAreaObject.VarrockWestMiningArea, MiningAreaObject.VarrockWestMineSafe);
         MiningSafeSpot.put(MiningAreaObject.VarrockEastMiningArea, MiningAreaObject.VarrockEastMineSafe);
    }
-
-
-
-
-
 
 
     @Override
