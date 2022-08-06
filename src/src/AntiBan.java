@@ -14,6 +14,7 @@ import org.dreambot.api.wrappers.items.Item;
 import org.dreambot.api.wrappers.widgets.Menu;
 import org.dreambot.api.wrappers.widgets.message.Message;
 import org.dreambot.api.methods.skills.Skill;
+import org.dreambot.api.input.Mouse;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,6 +22,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Random;
 
+import static org.dreambot.api.input.Mouse.moveMouseOutsideScreen;
 import static org.dreambot.api.methods.MethodProvider.sleep;
 import static org.dreambot.api.methods.tabs.Tabs.*;
 
@@ -68,5 +70,18 @@ public class AntiBan {
                  open(Tab.INVENTORY);
             }
     }
+
+    public void moveMouseOff(){
+        moveMouseOutsideScreen();
+        sleep(Calculations.random(20000,40000));
+        //return Calculations.random(600000,1800000);
+
+
+
+
+
+    }
+
+
 
 }

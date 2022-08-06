@@ -85,9 +85,16 @@ public class MiningTask extends TaskNode {
         }
                 MethodProvider.log(random_int);
 
-        if (random_int == max) {
+        if (random_int == 50) {
                     AntiBanObject.checkSkills();
                     MethodProvider.log("aye man im about to open inventory!");
+        }
+
+        if (random_int == 27) {
+            AntiBanObject.moveMouseOff();
+            MethodProvider.log("aye man im check sprinklers!!!");
+
+
         }
         return Calculations.random(500, 1000);
     }

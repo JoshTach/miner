@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-@ScriptManifest(category = Category.MINING, name = "pablo", description = "Mines anything, NOW INCLUDING EPIC IRON AND EAST MINE AS WELL AS ANTIBAN UPDATEOOO!!!!", author = "juan", version = 2.1)
+@ScriptManifest(category = Category.MINING, name = "pablo", description = "Mines anything, NOW INCLUDING EPIC IRON AND EAST MINE AS WELL AS ANTIBAN UPDATEOOO!!!!", author = "juan", version = 2.2)
 public class Miner extends TaskScript {
 
     MiningAreas MiningAreaObject = new MiningAreas();
