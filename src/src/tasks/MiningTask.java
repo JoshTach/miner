@@ -8,6 +8,8 @@ import org.dreambot.api.methods.map.Area;
 import org.dreambot.api.script.TaskNode;
 import org.dreambot.api.wrappers.interactive.GameObject;
 import src.MiningAreas;
+
+import static org.dreambot.api.methods.input.Camera.mouseRotateToEntity;
 import static org.dreambot.api.methods.walking.impl.Walking.walkExact;
 import static src.Miner.*;
 import java.util.Random;
@@ -18,20 +20,22 @@ public class MiningTask extends TaskNode {
     MiningAreas MiningAreaObject = new MiningAreas();
     AntiBan AntiBanObject = new AntiBan();
     public boolean isWalking = true;
-    public Area temp;
+    //public Area safeSpot;
 
 
-    public void runFromTarget(){
-        if (MiningAreaHashMap.get(miningPlace).contains(getLocalPlayer().getTile())){
-            temp = MiningSafeSpot.get(MiningAreaHashMap.get(miningPlace));
-            do {
-                walkExact(temp.getRandomTile());
-                sleep(Calculations.random(200,500));
-            }
-            while(!temp.contains(getLocalPlayer().getTile()));
-            //works kinda
-        }
-    }
+//    public int runFromTarget(){
+//        if (MiningAreaHashMap.get(miningPlace).contains(getLocalPlayer().getTile())){
+//            safeSpot = MiningSafeSpot.get(MiningAreaHashMap.get(miningPlace));
+//            do {
+//                walkExact(MiningAreaObject.VarrockEastMineSafe.getRandomTile());
+//                //walkExact(safeSpot.getRandomTile());
+//                sleep(Calculations.random(1000,1500));
+//            }
+//            while(!safeSpot.contains(getLocalPlayer().getTile()));
+//            //works kinda
+//        }
+//        return 10000;
+//    }
 
     public void walkToArea() {
         do {
@@ -54,7 +58,7 @@ public class MiningTask extends TaskNode {
     @Override
     public boolean accept() {
         // If our inventory isn't full and we're not mining, we should start
-        return !Inventory.isFull() && !isMining();
+        return !Inventory.isFull() && !isMining() && !(getLocalPlayer().isHealthBarVisible());
 
     }
     @Override
@@ -70,16 +74,15 @@ public class MiningTask extends TaskNode {
 
         GameObject rock = getClosestRock();
 
-        if (getLocalPlayer().isHealthBarVisible() && getLocalPlayer().isInCombat()) {
-                runFromTarget();
-                MethodProvider.log("running");
-        }
-            // If there aren't any available rocks near us, we should just wait until one's available
+        // If there aren't any available rocks near us, we should just wait until one's available
         if (rock == null) return Calculations.random(500, 1000);
         MethodProvider.log("NO ROCK OH NO");
 
         if (rock.interact("Mine")) { // If we successfully click on the rock
-
+                if (random_int == 10 || random_int == 15 || random_int == 20 || random_int == 25) {
+                    mouseRotateToEntity(rock);
+                    MethodProvider.log("moving camera");
+                }
                 sleepUntil(this::isMining, 2500); // Wait until we're mining, with a max wait time of 2,500ms (2.5 seconds)
                 MethodProvider.log("trying to mine XD!!!!");
         }
@@ -92,8 +95,7 @@ public class MiningTask extends TaskNode {
 
         if (random_int == 27) {
             AntiBanObject.moveMouseOff();
-            MethodProvider.log("aye man im check sprinklers!!!");
-
+            MethodProvider.log("moving mouse off screen");
 
         }
         return Calculations.random(500, 1000);

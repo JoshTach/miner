@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Random;
+import java.util.Timer;
 
 import static org.dreambot.api.input.Mouse.moveMouseOutsideScreen;
 import static org.dreambot.api.methods.MethodProvider.sleep;
@@ -75,13 +76,7 @@ public class AntiBan {
         moveMouseOutsideScreen();
         sleep(Calculations.random(20000,40000));
         //return Calculations.random(600000,1800000);
-
-
-
-
-
     }
-
 
 
 }

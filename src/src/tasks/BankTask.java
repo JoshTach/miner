@@ -28,8 +28,8 @@ public class BankTask extends TaskNode {
             // If this returns true, that means the bank is open and ready
             // You can see other things you can do now below
 
-            //Bank.depositAllItems();     // This will deposit everything in your inventory
-            Bank.deposit("Iron ore", 27);
+            Bank.depositAllExcept("Adamant pickaxe");     // This will deposit everything in your inventory
+            //Bank.deposit("Iron ore", 27);
             MethodProvider.log("opening bank or depo");
 
         } else {

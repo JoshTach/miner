@@ -9,6 +9,8 @@ import org.dreambot.api.script.impl.TaskScript;
 import src.tasks.MiningTask;
 import src.tasks.BankTask;
 import org.dreambot.api.methods.map.Area;
+import src.tasks.RunFromCombatTask;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,6 +36,7 @@ public class Miner extends TaskScript {
    public void addValues(){
         rnrc.put("Tin", 53);
         rnrc.put("Clay", 6705);
+        rnrc.put("Copper",4645);
         rnrc.put("Iron",2576);
         MiningAreaHashMap.put("West Mine", MiningAreaObject.VarrockWestMiningArea);
         MiningAreaHashMap.put("East Mine", MiningAreaObject.VarrockEastMiningArea);
@@ -47,7 +50,7 @@ public class Miner extends TaskScript {
         SkillTracker.start(Skill.MINING);
         addValues();
         createGUI();
-        addNodes(new MiningTask(), new BankTask());
+        addNodes(new MiningTask(), new BankTask(), new RunFromCombatTask());
     }
 
     private void createGUI() {
